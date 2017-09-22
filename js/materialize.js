@@ -2562,7 +2562,12 @@ if (Vel) {
     });
   };
 })(jQuery);
-;(function ($) {
+;
+
+
+
+
+(function ($) {
 
   var methods = {
     init: function (options) {
@@ -2805,7 +2810,12 @@ if (Vel) {
   $(document).ready(function () {
     $('ul.tabs').tabs();
   });
+  
 })(jQuery);
+
+
+
+
 ;(function ($) {
   $.fn.tooltip = function (options) {
     var timeout = null,

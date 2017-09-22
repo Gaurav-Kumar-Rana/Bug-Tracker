@@ -11,10 +11,11 @@
   <link rel="stylesheet" href="css/icon.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body ng-app="" ng-cloak>
+<body ng-app="datepickerBasicUsage" ng-cloak>
 
   <!--
     Your HTML content Start here
+    Angular JS Source - https://material.angularjs.org/1.1.4/demo/datepicker
   -->  
 <div class="row">
     <nav class="nav-extended">
@@ -53,11 +54,21 @@
     </nav>
     <div class="nav-content">
         <div class="container current-indecator">bug\issues</div>
-        <div class="container hide-on-med-and-down" id="tabMenu">
-          
+        <div class="container hide-on-med-and-down">
+          <ul class="tabs">
+          <li class="tab"><a href="#Code"><i class="material-icons">code</i>Code<span class="Counter">298</span></a></li>
+          <li class="tab"><a href="#Issue"><i class="material-icons">bug_report</i>Issue<span class="Counter">298</span></a></li>
+          <li class="tab"><a href="#Pull_Requests"><i class="material-icons">import_export</i>Pull Requests<span class="Counter">9</span></a></li>
+          <li class="tab"><a href="#Projects"><i class="material-icons">insert_chart
+</i>Projects<span class="Counter">8</span></a></li>
+          <li class="tab"><a href="#Wiki"><i class="material-icons">library_books</i>Wiki<span class="Counter">8</span></a></li>
+          <li class="tab"><a href="#Settings"><i class="material-icons">settings</i>Settings</a></li> 
+          <li class="tab"><a href="#Insits">Insits</a></li> 
+          </ul>
         </div>
     </div>
     <div class="container">
+
       <div id="Code" class="col s12">No description, website, or topics provided.</div>
       <div id="Issue" class="col s12">
 
@@ -134,7 +145,9 @@
             <li><a href="#">Gaurav Kumar Rana</a></li>
             <li><a href="#">Gaurav Kumar Rana</a></li>
           </ul>
-        </div></div>
+        </div>
+
+      </div>
       <div id="Pull_Requests" class="col s12">No description, website, or topics provided.</div>
       <div id="Projects" class="col s12">No description, website, or topics provided.</div>
       <div id="Wiki" class="col s12">No description, website, or topics provided.</div>
@@ -148,7 +161,6 @@
 
   <!-- Angular Material requires Angular.js Libraries -->
   <script src="js/angular.min.js"></script>
-  <script src="js/angular-route.js"></script>
   <script src="js/angular-animate.min.js"></script>
   <script src="js/angular-aria.min.js"></script>
   <script src="js/angular-messages.min.js"></script>
@@ -166,18 +178,8 @@
     $(document).ready(function(){
       $(".button-collapse").sideNav();
       $(".dropdown-button").dropdown({belowOrigin: true});
-      var menudata = {
-        0:{"menu_name":"Code","icon_name":"code","menu_count":12},
-        1:{"menu_name":"Issue","icon_name":"bug_report","menu_count":9},
-        3:{"menu_name":"Pull_Requests","icon_name":"import_export","menu_count":10},
-        4:{"menu_name":"Projects","icon_name":"insert_chart","menu_count":16},
-        5:{"menu_name":"Wiki","icon_name":"library_books","menu_count":3},
-        6:{"menu_name":"Settings","icon_name":"settings","menu_count":0},
-        7:{"menu_name":"Insits","icon_name":"","menu_count":0},
-      };
-      $('#tabMenu').loadMenu({
-        data:menudata,
-      });
+      $('ul.tabs').tabs();
+      $('ul.tabs').tabs('select_tab', 'Issue');
     })
   </script>
   

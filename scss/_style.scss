@@ -1,0 +1,15 @@
+.nav-extended{
+	-webkit-box-shadow: none;
+	 box-shadow: none;
+}
+.tabs.tabs-transparent .indicator{
+	top: 0;
+	background-color: #17a53c;
+}
+
+.tabs .tab {
+    background: #fafafa;
+}
+.tabs.tabs-transparent .tab a:hover, .tabs.tabs-transparent .tab a.active{
+	color:#000;
+}
