@@ -149,22 +149,24 @@ body{
     height: 37px !important;
     line-height: 38px !important;
   }
-  .filter-btn + .dropdown-content{
+  .filter-btn + .dropdown-content,md-select-menu{
     margin-top: 6px;
-    min-width: 150px;
+    min-width: 150px !important;
     border: 1px solid #e1e4e8;
     box-shadow: 0 3px 12px rgba(27,31,35,0.15);
     width: fit-content !important;
   }
-  .filter-btn + .dropdown-content li{
+  .filter-btn + .dropdown-content li,md-option{
       border-bottom: 1px solid #e1e4e8;
-      min-height: 35px;
-      line-height: 35px;
+      min-height: 35px !important;
+      line-height: 35px !important;
+      height: 40px !important;
   }
   .filter-btn + .dropdown-content li:focus,.filter-btn + .dropdown-content li:hover{
 
   }
-  .filter-btn + .dropdown-content li>a, .filter-btn + .dropdown-content li>span{
+  .filter-btn + .dropdown-content li>a, .filter-btn + .dropdown-content li>span,
+  md-select-menu.md-default-theme md-content md-option, md-select-menu md-content md-option{
     padding: 8px 8px 8px 15px;
     white-space: nowrap;
     max-width: 250px;
@@ -178,7 +180,9 @@ body{
   .filter-btn + .dropdown-content li>a:focus, 
   .filter-btn + .dropdown-content li>span:focus,
   .filter-btn + .dropdown-content li:focus,
-  .filter-btn + .dropdown-content li:focus{
+  .filter-btn + .dropdown-content li:focus,
+  md-select-menu.md-default-theme md-content md-option:not([disabled]):focus, md-select-menu md-content md-option:not([disabled]):focus, md-select-menu.md-default-theme md-content md-option:not([disabled]):hover, md-select-menu md-content md-option:not([disabled]):hover
+  {
     background-color: #0366d6;
     color: #fff;
   }
@@ -192,7 +196,9 @@ body{
     border-color: rgba(27,31,35,0.5);
     text-decoration: none;
     -webkit-transition: none;
-    transition: .none;
+    transition: none;
+    border: 1px solid rgba(27, 31, 35, 0.2);
+    box-shadow: none;
 }
 .btn.right.new-issue:focus,.btn.right.new-issue:hover{
     background-color: #269f42;
@@ -201,6 +207,7 @@ body{
     border-color: rgba(27,31,35,0.5);
     text-decoration: none;
     background-repeat: repeat-x;
+    box-shadow: none;
 }
 .border-rght0{
   border-right:0px;
@@ -264,5 +271,38 @@ border-bottom-left-radius: 4px;
     height: 100% !important;
     line-height: 48px !important;
 }
+
+/*Angular Control Styles */
+md-select {
+    margin: 0px;
+    height: 48px;
+    min-width: 100px;
+    padding: 0px 10px;
+    color: #000;
+}
+md-content{
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+md-select-value,md-select,
+md-select-value.md-select-value md-select-placeholder,
+md-select.md-default-theme:not([disabled]):focus .md-select-value, 
+md-select:not([disabled]):focus .md-select-value,
+md-select.md-default-theme .md-select-value.md-select-placeholder, 
+md-select .md-select-value.md-select-placeholder,
+md-select.md-default-theme:not([disabled]):focus .md-select-value.md-select-placeholder, 
+md-select:not([disabled]):focus .md-select-value.md-select-placeholder{
+  color: #444d56 !important;
+  border:0px !important;
+}
+
+md-select-value:focus,
+md-select.md-default-theme:not([disabled]):focus .md-select-value.md-select-placeholder, 
+md-select:not([disabled]):focus .md-select-value.md-select-placeholder{
+  outline: 2px solid #96baf3 !important;
+}
+
+
 
 /*# sourceMappingURL=main.css.map */
