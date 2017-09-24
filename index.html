@@ -17,6 +17,7 @@
     Your HTML content Start here
   -->  
 <div class="row">
+
     <nav class="nav-extended">
       <div class="container nav-wrapper">
         <a href="#" class="brand-logo">go</a>
@@ -57,92 +58,14 @@
           
         </div>
     </div>
-    <div class="container">
-      <div id="Code" class="col s12"> Code tab </div>
 
 
+    <div class="container" ng-view>
 
-      <div id="Issue" class="col s12">
-        <div ng-controller="myAppController" ng-cloak class="row">
-        <nav class="filter-panel">
-          <div class="nav-wrapper">
-              <a class='dropdown-button filter-btn border-rght0 .border-rght0' href='#' data-activates='dropdown0'>Filters<i class="material-icons">arrow_drop_down</i></a>
 
-              <ul id='dropdown0' class='dropdown-content'>
-                <li><a href="#!">Open issue and pull requests</a></li>
-                <li><a href="#!">Your issues</a></li>
-                <li><a href="#!">Your pull requests</a></li>
-                <li><a href="#!">Everything Assigned you</a></li>
-                <li><a href="#!">Everything mentioning your</a></li>
-              </ul>
-
-              <div class="col s4 input-field">
-                <i class="material-icons input-search">search</i>
-                <input id="search" type="search" required>
-              </div>
-              <div class="lable-pnl border-radius3">
-                <a class="action-lbl" href="#">Lables</a>
-                <a class="action-lbl" href="#">Milstones</a>
-              </div>
-              <button class="btn right new-issue">New issue</button>
-          </div>
-        </nav> 
-        <div grid-data grid-options="gridOptions" grid-actions="gridActions" class="issue-list">
-
-          <nav class="issue-header">
-            <div class="nav-wrapper">
-              <ul class="right hide-on-small-and-down">
-                <li>
-                  <md-select filter-by="statusDisplay"
-                           filter-type="select"
-                           ng-model="status"
-                           placeholder="Status"
-                           ng-change="filter()">
-                    <md-option value="">All Statuses</md-option>
-                    <md-option ng-repeat="option in statusOptions track by option.value"
-                               value="{{option.value}}">
-                        {{option.text}}
-                    </md-option>
-                  </md-select>
-                </li>
-              </ul>
-            </div>
-          </nav>
-
-          <ul grid-item class="issue-body">
-            <li><a href="#" ng-bind="item.statusDisplay"></a></li>
-          </ul>
-
-          <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
-            <grid-pagination max-size="5"
-                             boundary-links="true"
-                             class="pagination"
-                             ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
-                             total-items="paginationOptions.totalItems"
-                             ng-model="paginationOptions.currentPage"
-                             ng-change="reloadGrid()"
-                             items-per-page="paginationOptions.itemsPerPage">
-            </grid-pagination>
-            <md-input-container flex-offset-gt-xs="5" class="items-per-page">
-                <md-select ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
-                    <md-option ng-value="10">10</md-option>
-                    <md-option ng-value="25">25</md-option>
-                    <md-option ng-value="50">50</md-option>
-                    <md-option ng-value="75">75</md-option>
-                </md-select>
-            </md-input-container>
-          </div>
-
-        </div>
     </div>
-      </div>
 
-      <div id="Pull_Requests" class="col s12">No description, website, or topics provided.</div>
-      <div id="Projects" class="col s12">No description, website, or topics provided.</div>
-      <div id="Wiki" class="col s12">No description, website, or topics provided.</div>
-      <div id="Settings" class="col s12">No description, website, or topics provided.</div>
-      <div id="Insits" class="col s12">No description, website, or topics provided.</div>
-    </div>
+
 </div>
   <!--
     Your HTML content Ends here
@@ -161,37 +84,32 @@
   <script src="js/angular-material.min.js"></script>
 
   <!-- Material Library -->
-  <script src="js/materialize.min.js"></script>
+  <script src="js/materialize.js"></script>
   
   <!-- Your application bootstrap  -->
   <script src="js/mainApp.js"></script>
+  <script src="js/db.js"></script>
 
   <script type="text/javascript">
     $(document).ready(function(){
+
       $(".button-collapse").sideNav();
-      $(".dropdown-button").dropdown({belowOrigin: true});
+      
       var menudata = {
-        0:{"menu_name":"Code","icon_name":"code","menu_count":12},
-        1:{"menu_name":"Issue","icon_name":"bug_report","menu_count":9},
-        3:{"menu_name":"Pull_Requests","icon_name":"import_export","menu_count":10},
-        4:{"menu_name":"Projects","icon_name":"insert_chart","menu_count":16},
-        5:{"menu_name":"Wiki","icon_name":"library_books","menu_count":3},
-        6:{"menu_name":"Settings","icon_name":"settings","menu_count":0},
-        7:{"menu_name":"Insits","icon_name":"","menu_count":0},
+        0:{"menu_name":"Code","icon_name":"code","menu_count":12,"menu_code":'code'},
+        1:{"menu_name":"Issue","icon_name":"bug_report","menu_count":9,"menu_code":'issue'},
+        3:{"menu_name":"Pull Requests","icon_name":"import_export","menu_count":10,"menu_code":'pull_requests'},
+        4:{"menu_name":"Projects","icon_name":"insert_chart","menu_count":16,"menu_code":'projects'},
+        5:{"menu_name":"Wiki","icon_name":"library_books","menu_count":3,"menu_code":'wiki'},
+        6:{"menu_name":"Settings","icon_name":"settings","menu_count":0,"menu_code":'settings'},
+        7:{"menu_name":"Insits","icon_name":"","menu_count":0,"menu_code":'insits'},
       };
+
       $('#tabMenu').loadMenu({
         data:menudata,
+        activeTab:'issue',
       });
-      setTimeout(function(){ 
-        $('.dropdown-content').find('li').click(function(){
-                debugger;
-                _actionbtn = $(this).parent().attr('id');
-                _text = $(this).find('a').text();
-                _actionbtn = "[data-activates='"+_actionbtn+"']";
-                $(_actionbtn).find('.dropdown-button-text').text(_text);
-                $(_actionbtn).find('input').val(_text);
-              });
-      }, 300);
+      
     });
   </script>
   

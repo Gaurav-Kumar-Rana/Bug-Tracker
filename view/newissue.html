@@ -1,0 +1,76 @@
+
+
+<div class="timeline-comments" ng-controller="newissueController">
+<form>
+<div class="user-image"></div>
+
+<div  class="create-new-issue">
+
+
+  <span class="arrow-left">
+    <span class="arrow-left"></span>
+  </span>
+
+
+  <div class="header-panel">
+    <div class="col s12 input-field">
+          <input id="issueHeader" type="text" required>
+    </div>
+  </div>
+
+
+  <div class="body-panel" id="create-tab">
+    <div class="body-tab-panel">
+      <ul class="tabs">
+        <li class="tab"><a href="#write" class="active">write</a></li>
+        <li class="tab"><a href="#preview">preview</a></li>
+      </ul>
+    </div>
+
+    <div id="write" class="col s12">
+      <div class="textarea-panel" id="description">
+        <textarea  placeholder="Leave a comment"></textarea>
+        <p class="textarea-footer"></p>
+      </div>
+    </div>
+
+    <div id="preview" class="col s12" style="display: none;">
+      <p class="preview-panel">Preview</p>
+    </div>
+  </div>
+
+  <button id = "createNewIssueBtn" class="btn theme-btn right" onclick="create()" disabled="disabled">Submit new issue</button>
+</div>
+</form>
+</div>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    $('#create-tab').tabs();
+
+
+    $('#issueHeader').on('keyup',function(){
+      if($.trim($(this).val()) != ""){
+          $('#createNewIssueBtn').removeAttr("disabled");
+      }else{
+        $('#createNewIssueBtn').attr("disabled","disabled");
+      }
+    });
+
+  });
+
+function create(){
+  var strdata = [];
+  debugger;
+  //{ id: "01", name: "gopal",desc: "gopal@tutorialspoint.com",dt:"20/09/2017 06:30 PM" },
+
+  strdata["name"] = $('#issueHeader').val();
+  strdata["desc"] = $('#description').val();
+  strdata["dt"] = new Date();
+
+  createNewIssue(strdata);
+
+}
+
+</script>

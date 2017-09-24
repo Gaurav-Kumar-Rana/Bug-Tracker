@@ -1,0 +1,50 @@
+[
+  {
+      "tag": "Bug",
+      "color":"red"
+  }, 
+  {
+      "tag": "Js",
+      "color":"pink"
+  }, 
+  {
+      "tag": "Angular",
+      "color":"green"
+  },
+  {
+      "tag": "Duplicate",
+      "color":"orange"
+  }, 
+  {
+      "tag": "Enhancement",
+      "color":"#401265"
+  }, 
+  {
+      "tag": "Good first issue",
+      "color":"#349875"
+  },
+  {
+      "tag": "Help Wanted",
+      "color":"#675849"
+  }, 
+  {
+      "tag": "Invalid",
+      "color":"#120034"
+  }, 
+  {
+      "tag": "Questions",
+      "color":"#008765"
+  },
+  {
+      "tag": "Wontfix",
+      "color":"#234532"
+  }, 
+  {
+      "tag": "Willfix",
+      "color":"#543216"
+  }, 
+  {
+      "tag": "Fixed",
+      "color":"#123456"
+  }
+]

@@ -2571,6 +2571,7 @@ if (Vel) {
 
   var methods = {
     init: function (options) {
+      debugger;
       var defaults = {
         onShow: null,
         swipeable: false,
@@ -2808,7 +2809,7 @@ if (Vel) {
   };
 
   $(document).ready(function () {
-    $('ul.tabs').tabs();
+    //$('ul.tabs').tabs();
   });
   
 })(jQuery);

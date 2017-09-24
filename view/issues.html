@@ -1,76 +1,90 @@
-<div id="Issue" class="col s12">
+<div ng-controller="issueController" class="row">
+  <nav class="filter-panel">
+    <div class="nav-wrapper">
+        <button class='dropdown-button filter-btn border-rght0 .border-rght0' href='#' data-activates='dropdown0'><i class="material-icons">arrow_drop_down</i><span class="dropdown-button-text">Filters</span></button>
 
-        <nav class="filter-panel">
-          <div class="nav-wrapper">
-              <a class='dropdown-button filter-btn border-rght0 .border-rght0' href='#' data-activates='dropdown1'>Filters<i class="material-icons">arrow_drop_down</i></a>
+        <ul id='dropdown0' class='dropdown-content'>
+          <li><a href="#!">Open issue and pull requests</a></li>
+          <li><a href="#!">Your issues</a></li>
+          <li><a href="#!">Your pull requests</a></li>
+          <li><a href="#!">Everything Assigned you</a></li>
+          <li><a href="#!">Everything mentioning your</a></li>
+        </ul>
 
-              <!-- Dropdown Structure -->
-              <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="#!">Open issue and pull requests</a></li>
-                <li><a href="#!">Your issues</a></li>
-                <li><a href="#!">Your pull requests</a></li>
-                <li><a href="#!">Everything Assigned you</a></li>
-                <li><a href="#!">Everything mentioning your</a></li>
-              </ul>
+        <div class="col s4 input-field">
+          <i class="material-icons input-search">search</i>
+          <input id="search" type="search" required>
+        </div>
+        <div class="lable-pnl border-radius3">
+          <a class="action-lbl" href="#/issue/lables">Lables</a>
+          <a class="action-lbl" href="#/issue/lables">Milstones</a>
+        </div>
+        <a class="btn theme-btn right" href="#/issue/new">New issue</a>
+    </div>
+  </nav> 
+  <div grid-data grid-options="gridOptions" grid-actions="gridActions" class="issue-list">
 
-              <div class="col s4 input-field">
-                <i class="material-icons input-search">search</i>
-                <input id="search" type="search" required>
-              </div>
-              <div class="lable-pnl border-radius3">
-                <a class="action-lbl" href="#">Lables</a>
-                <a class="action-lbl" href="#">Milstones</a>
-              </div>
-              <button class="btn right new-issue">New issue</button>
-          </div>
-        </nav>
-        <div class="issue-list">
-          <nav class="issue-header">
-            <div class="nav-wrapper">
-              <ul class="right hide-on-small-and-down">
-                <li>
-                  <a class='dropdown-button filter-btn' href='#' data-activates='dropdown2'>Author<i class="material-icons">arrow_drop_down</i></a>
+    <nav class="issue-header">
+      <div class="nav-wrapper">
+        <ul class="right hide-on-small-and-down">
+          <li>
+            <md-select filter-by="statusDisplay"
+                     filter-type="select"
+                     ng-model="status"
+                     placeholder="Status"
+                     ng-change="filter()">
+              <md-option value="">All Statuses</md-option>
+              <md-option ng-repeat="option in statusOptions track by option.value"
+                         value="{{option.value}}">
+                  {{option.text}}
+              </md-option>
+            </md-select>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-              <!-- Dropdown Structure -->
-                  <ul id='dropdown2' class='dropdown-content'>
-                    <li><a href="#!">Open issue and pull requests</a></li>
-                    <li><a href="#!">Your issues</a></li>
-                    <li><a href="#!">Your pull requests</a></li>
-                    <li><a href="#!">Everything Assigned you</a></li>
-                    <li><a href="#!">Everything mentioning your</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a class='dropdown-button filter-btn' href='#' data-activates='dropdown3'>lable<i class="material-icons">arrow_drop_down</i></a>
+    <ul grid-item class="issue-body">
+      <li><a href="#" ng-bind="item.statusDisplay"></a></li>
+    </ul>
 
-              <!-- Dropdown Structure -->
-                  <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="#!">Open issue and pull requests</a></li>
-                    <li><a href="#!">Your issues</a></li>
-                    <li><a href="#!">Your pull requests</a></li>
-                    <li><a href="#!">Everything Assigned you</a></li>
-                    <li><a href="#!">Everything mentioning your</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a class='dropdown-button filter-btn' href='#' data-activates='dropdown4'>Projects<i class="material-icons">arrow_drop_down</i></a>
+    <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
+      <grid-pagination max-size="5"
+                       boundary-links="true"
+                       class="pagination"
+                       ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                       total-items="paginationOptions.totalItems"
+                       ng-model="paginationOptions.currentPage"
+                       ng-change="reloadGrid()"
+                       items-per-page="paginationOptions.itemsPerPage">
+      </grid-pagination>
+      <md-input-container flex-offset-gt-xs="5" class="items-per-page">
+          <md-select ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+              <md-option ng-value="10">10</md-option>
+              <md-option ng-value="25">25</md-option>
+              <md-option ng-value="50">50</md-option>
+              <md-option ng-value="75">75</md-option>
+          </md-select>
+      </md-input-container>
+    </div>
+</div>
+<!-- Angular Material Library -->
+<!-- <script src="js/angular-material.min.js"></script> -->
+<script>
+  $(document).ready(function(){
 
-              <!-- Dropdown Structure -->
-                  <ul id='dropdown4' class='dropdown-content'>
-                    <li><a href="#!">Open issue and pull requests</a></li>
-                    <li><a href="#!">Your issues</a></li>
-                    <li><a href="#!">Your pull requests</a></li>
-                    <li><a href="#!">Everything Assigned you</a></li>
-                    <li><a href="#!">Everything mentioning your</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          <ul class="issue-body">
-            <li><a href="#">Gaurav Kumar Rana</a></li>
-            <li><a href="#">Gaurav Kumar Rana</a></li>
-            <li><a href="#">Gaurav Kumar Rana</a></li>
-            <li><a href="#">Gaurav Kumar Rana</a></li>
-          </ul>
-        </div></div>
+    setTimeout(function(){
+        $(".dropdown-button").dropdown({belowOrigin: true});
+    },300);    
+
+    $('.dropdown-content').find('li').click(function(e){
+      e.preventDefault();
+      _actionbtn = $(this).parent().attr('id');
+      _text = $(this).find('a').text();
+      _actionbtn = "[data-activates='"+_actionbtn+"']";
+      $(_actionbtn).find('.dropdown-button-text').text(_text);
+    });
+
+
+  });
+</script>
