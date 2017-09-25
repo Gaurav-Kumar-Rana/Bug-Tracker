@@ -20,12 +20,12 @@
 
     <nav class="nav-extended">
       <div class="container nav-wrapper">
-        <a href="#" class="brand-logo">go</a>
+        <a href="#" class="brand-logo">Do</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#Account"><i class="user-icon material-icons">assignment_ind</i>Sign in <sapn>or</sapn> Sign up</a></li>
+          <li><a id="Account" href="#modal1"><i class="user-icon material-icons">assignment_ind</i>Sign in <sapn>or</sapn> Sign up</a></li>
         </ul>
-        <ul class="side-nav" id="mobile-demo">
+        <!-- <ul class="side-nav" id="mobile-demo">
           <li>
             <a href="#Account"><i class="user-icon material-icons">assignment_ind</i>Sign in <sapn>or</sapn> Sign up</a>
           </li>
@@ -49,21 +49,27 @@
             <a href="#Settings"><i class="material-icons">settings</i>Settings</a>
             </li> 
            <li><a href="#Insits">Insits</a></li> 
-        </ul>
+        </ul> -->
       </div>
     </nav>
     <div class="nav-content">
         <div class="container current-indecator">bug\issues</div>
-        <div class="container hide-on-med-and-down" id="tabMenu">
-          
-        </div>
+        <div class="container hide-on-med-and-down" id="tabMenu"></div>
     </div>
 
 
-    <div class="container" ng-view>
+    <div class="container" ng-view></div>
 
-
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Under Construction</h4>
+      <p>Thanks for visiting come later.</p>
     </div>
+    <div class="modal-footer">
+      <button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
+    </div>
+  </div>
 
 
 </div>
@@ -77,8 +83,8 @@
   <script src="js/angular-animate.min.js"></script>
   <script src="js/angular-aria.min.js"></script>
   <script src="js/angular-messages.min.js"></script>
-  <script src="js/dataGrid.min.js"></script>
-  <script src="js/pagination.min.js"></script>
+  <script src="js/dataGrid.js"></script>
+  <script src="js/pagination.js"></script>
 
   <!-- Angular Material Library -->
   <script src="js/angular-material.min.js"></script>
@@ -94,15 +100,21 @@
     $(document).ready(function(){
 
       $(".button-collapse").sideNav();
+      $('#modal1').modal();
+
+      $('#Account').on('click',function(e){
+        e.preventDefault();
+        $('#modal1').modal('open');
+      });
       
       var menudata = {
-        0:{"menu_name":"Code","icon_name":"code","menu_count":12,"menu_code":'code'},
-        1:{"menu_name":"Issue","icon_name":"bug_report","menu_count":9,"menu_code":'issue'},
-        3:{"menu_name":"Pull Requests","icon_name":"import_export","menu_count":10,"menu_code":'pull_requests'},
-        4:{"menu_name":"Projects","icon_name":"insert_chart","menu_count":16,"menu_code":'projects'},
-        5:{"menu_name":"Wiki","icon_name":"library_books","menu_count":3,"menu_code":'wiki'},
-        6:{"menu_name":"Settings","icon_name":"settings","menu_count":0,"menu_code":'settings'},
-        7:{"menu_name":"Insits","icon_name":"","menu_count":0,"menu_code":'insits'},
+        //0:{"menu_name":"Code","icon_name":"code","menu_count":12,"menu_code":'code'},
+        1:{"menu_name":"Issue","icon_name":"bug_report","menu_count":3,"menu_code":'issue'},
+       // 3:{"menu_name":"Pull Requests","icon_name":"import_export","menu_count":10,"menu_code":'pull_requests'},
+        //4:{"menu_name":"Projects","icon_name":"insert_chart","menu_count":16,"menu_code":'projects'},
+        //5:{"menu_name":"Wiki","icon_name":"library_books","menu_count":3,"menu_code":'wiki'},
+        //6:{"menu_name":"Settings","icon_name":"settings","menu_count":0,"menu_code":'settings'},
+        //7:{"menu_name":"Insits","icon_name":"","menu_count":0,"menu_code":'insits'},
       };
 
       $('#tabMenu').loadMenu({

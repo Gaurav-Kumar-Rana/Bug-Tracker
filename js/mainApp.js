@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', ['dataGrid', 'pagination','ngRoute','ngMaterial']);
 
 myApp.controller('issueController', ['$scope', 'issueFactory', function ($scope, issueFactory) {
-
+debugger;
     $scope.gridOptions = {
         data: [],
         urlSync: false
@@ -10,10 +10,22 @@ myApp.controller('issueController', ['$scope', 'issueFactory', function ($scope,
         $scope.gridOptions.data = responseData.data;
     })
 
+    $scope.newDate = function(newDate){
+
+			var dateObj = new Date(newDate);
+			var month = dateObj.getUTCMonth() + 1;
+			var day = dateObj.getUTCDate();
+			var year = dateObj.getUTCFullYear();
+
+			newdate = day  + "/" + month + "/" + year;
+
+    		return (newdate);
+    }
+
 }]);
 
 myApp.factory('issueFactory', function ($http) {
-
+debugger;
     return {
         getData: function () {
             return $http({
@@ -26,7 +38,6 @@ myApp.factory('issueFactory', function ($http) {
 
 
 myApp.controller('labelsController',['$scope','labelsFactory',function($scope,labelsFactory){
-
 	$scope.lablesOptions = {
         data: [],
         urlSync: false
@@ -55,6 +66,8 @@ myApp.controller('newissueController',['$scope',function($scope){
 	
     
 }]);
+
+
 
 
 

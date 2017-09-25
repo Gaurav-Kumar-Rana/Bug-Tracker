@@ -1,6 +1,6 @@
 
 
-<div class="timeline-comments" ng-controller="newissueController">
+<div class="timeline-comments" ng-controller="newissueController" ng-cloak>
 <form>
 <div class="user-image"></div>
 
@@ -58,12 +58,15 @@ $(document).ready(function(){
       }
     });
 
+    $('[href="#preview"]').on('click',function(){
+      _desc  = $('#description').find('textarea').val();
+      $('#preview').find('.preview-panel').text(_desc);
+    });
+
   });
 
 function create(){
   var strdata = [];
-  debugger;
-  //{ id: "01", name: "gopal",desc: "gopal@tutorialspoint.com",dt:"20/09/2017 06:30 PM" },
 
   strdata["name"] = $('#issueHeader').val();
   strdata["desc"] = $('#description').val();
