@@ -1,129 +1,53 @@
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--JQuery Library -->
-  <script async="" src="js/jquery-3.2.1.min.js"></script>
-  <!--Material style sheet -->
-  <link rel="stylesheet" href="css/materialize.min.css">
-  <!-- Angular Material style sheet -->
-  <link rel="stylesheet" href="css/angular-material.min.css">
-  <!-- Custom style sheet -->
-  <link rel="stylesheet" href="css/icon.css">
-  <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--JQuery Library -->
+    <script async="" src="js/jquery-3.2.1.min.js"></script>
+    <!--Material style sheet -->
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="css/angular-material.min.css">
+    <!-- Custom style sheet -->
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body ng-app="myApp" ng-cloak>
 
-  <!--
+    <!--
     Your HTML content Start here
-  -->  
-<div class="row">
-
-    <nav class="nav-extended">
-      <div class="container nav-wrapper">
-        <a href="#" class="brand-logo">Do</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a id="Account" href="#modal1"><i class="user-icon material-icons">assignment_ind</i>Sign in <sapn>or</sapn> Sign up</a></li>
-        </ul>
-        <!-- <ul class="side-nav" id="mobile-demo">
-          <li>
-            <a href="#Account"><i class="user-icon material-icons">assignment_ind</i>Sign in <sapn>or</sapn> Sign up</a>
-          </li>
-          <li>
-            <a href="#Code"><i class="material-icons">code</i>Code<span class="Counter">298</span></a>
-          </li>
-          <li>
-            <a href="#Issue"><i class="material-icons">bug_report</i>Issue<span class="Counter">298</span></a>
-          </li>
-          <li>
-            <a href="#Pull_Requests"><i class="material-icons">import_export</i>Pull Requests<span class="Counter">9</span></a>
-            </li>
-          <li>
-            <a href="#Projects"><i class="material-icons">insert_chart
-</i>Projects<span class="Counter">8</span></a>
-            </li>
-          <li>
-            <a href="#Wiki"><i class="material-icons">library_books</i>Wiki<span class="Counter">8</span></a>
-            </li>
-          <li>
-            <a href="#Settings"><i class="material-icons">settings</i>Settings</a>
-            </li> 
-           <li><a href="#Insits">Insits</a></li> 
-        </ul> -->
-      </div>
-    </nav>
-    <div class="nav-content">
-        <div class="container current-indecator">bug\issues</div>
-        <div class="container hide-on-med-and-down" id="tabMenu"></div>
+  -->
+    <div class="row">
+        <header-menu class="container"></header-menu>
     </div>
 
-
-    <div class="container" ng-view></div>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Under Construction</h4>
-      <p>Thanks for visiting come later.</p>
+    <div class="row">
+        <div class="container" ng-view></div>
     </div>
-    <div class="modal-footer">
-      <button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
-    </div>
-  </div>
-
-
-</div>
-  <!--
+    <!--
     Your HTML content Ends here
-  --> 
+  -->
 
-  <!-- Angular Material requires Angular.js Libraries -->
-  <script src="js/angular.min.js"></script>
-  <script src="js/angular-route.js"></script>
-  <script src="js/angular-animate.min.js"></script>
-  <script src="js/angular-aria.min.js"></script>
-  <script src="js/angular-messages.min.js"></script>
-  <script src="js/dataGrid.js"></script>
-  <script src="js/pagination.js"></script>
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-aria.min.js"></script>
+    <script src="js/angular-messages.min.js"></script>
 
-  <!-- Angular Material Library -->
-  <script src="js/angular-material.min.js"></script>
+    <!-- Angular Services -->
+    <script src="js/dataGrid.js"></script>
+    <script src="js/pagination.js"></script>
 
-  <!-- Material Library -->
-  <script src="js/materialize.js"></script>
-  
-  <!-- Your application bootstrap  -->
-  <script src="js/mainApp.js"></script>
-  <script src="js/db.js"></script>
+    <!-- Angular Material Library -->
+    <script src="js/angular-material.min.js"></script>
 
-  <script type="text/javascript">
-    $(document).ready(function(){
+    <!-- Material Library -->
+    <script src="js/materialize.js"></script>
 
-      $(".button-collapse").sideNav();
-      $('#modal1').modal();
-
-      $('#Account').on('click',function(e){
-        e.preventDefault();
-        $('#modal1').modal('open');
-      });
-      
-      var menudata = {
-        //0:{"menu_name":"Code","icon_name":"code","menu_count":12,"menu_code":'code'},
-        1:{"menu_name":"Issue","icon_name":"bug_report","menu_count":3,"menu_code":'issue'},
-       // 3:{"menu_name":"Pull Requests","icon_name":"import_export","menu_count":10,"menu_code":'pull_requests'},
-        //4:{"menu_name":"Projects","icon_name":"insert_chart","menu_count":16,"menu_code":'projects'},
-        //5:{"menu_name":"Wiki","icon_name":"library_books","menu_count":3,"menu_code":'wiki'},
-        //6:{"menu_name":"Settings","icon_name":"settings","menu_count":0,"menu_code":'settings'},
-        //7:{"menu_name":"Insits","icon_name":"","menu_count":0,"menu_code":'insits'},
-      };
-
-      $('#tabMenu').loadMenu({
-        data:menudata,
-        activeTab:'issue',
-      });
-      
-    });
-  </script>
-  
+    <!-- Your application js  -->
+    <script src="js/directives/label.directive/label.directive.js"></script>
+    <script src="js/components/tab.components/tab.components.js"></script>
+    <script src="js/mainApp.js"></script>
+    <script src="js/db.js"></script>
 </body>
 </html>

@@ -1,0 +1,74 @@
+<nav class="nav-extended">
+  <div class="container nav-wrapper">
+
+    <a href="#" class="brand-logo">{{$ctrl.LogoName}}</a>
+
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="#SigupSignin"><i class="user-icon material-icons">assignment_ind</i>Sign in <sapn>or</sapn> Sign up</a></li>
+    </ul>
+
+    <ul class="side-nav" id="mobile-demo">
+      <li>
+        <a href="#SigupSignin"><i class="user-icon material-icons">assignment_ind</i>Sign in <sapn>or</sapn> Sign up</a>
+      </li>
+		<li ng-repeat="menu in $ctrl.menudata.data">
+			<a href="#{{menu.menu_code}}" ng-click="$ctrl.select(menu)" ng-class="{active:menu.selected}">
+				<i class="material-icons">{{menu.icon_name}}</i>
+				{{menu.menu_name}}
+				<span class="Counter">{{menu.menu_count}}</span>
+			</a>
+		</li>
+    </ul>
+
+  </div>
+</nav>
+
+<div class="nav-content">
+    <div class="container current-indecator">
+    	<strong>Bug Tracker / <a href="#{{$ctrl.currentLocation}}">{{$ctrl.text}} </a></strong>
+    </div>
+    <div class="container hide-on-med-and-down">
+    	<ul class="tabs">
+			<li class="tab" ng-repeat="menu in $ctrl.menudata.data">
+				<a href="#{{menu.menu_code}}" ng-click="$ctrl.select(menu)" ng-class="{active:menu.selected}">
+					<i class="material-icons">{{menu.icon_name}}</i>
+					{{menu.menu_name}}
+					<span class="Counter">{{menu.menu_count}}</span>
+				</a>
+			</li>
+		</ul>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="SigupSignin" class="modal">
+    <div class="modal-content">
+        <h4>Under Construction</h4>
+        <p>Thanks for visiting, come later.</p>
+    </div>
+    <div class="modal-footer">
+        <button class="modal-action modal-close waves-effect btn-flat">Close</button>
+    </div>
+</div>
+
+<script>
+	$(document).ready(function(){
+		$(".button-collapse").sideNav();
+
+		$('#SigupSignin').modal();
+
+		$('[href="#SigupSignin"]').on('click',function(e){
+			e.preventDefault();
+			$('#SigupSignin').modal('open');
+		});
+	});
+</script>
+
+
+
+
+
+
+

@@ -16,7 +16,6 @@ const bugData = [
 
 var db;
 //var request = window.indexedDB.open("newDatabase", 1);
-debugger;
 
 var request = window.indexedDB.open("bugtrackerdb", 1);
 
@@ -157,7 +156,6 @@ function findLastInsertedId(){
 
 /*app function*/
 function createNewIssue(strdata){
-   debugger;
    strdata["id"] = findLastInsertedId();
    addNewData(strdata);
 }

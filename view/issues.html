@@ -1,7 +1,8 @@
 <div ng-controller="issueController" class="row" ng-cloak>
   <nav class="filter-panel">
     <div class="nav-wrapper">
-        <button class='dropdown-button filter-btn border-rght0 .border-rght0' href='#' data-activates='dropdown0'><i class="material-icons">arrow_drop_down</i><span class="dropdown-button-text">Filters</span></button>
+        <button class='dropdown-button filter-btn border-rght0 .border-rght0' href='#' data-activates='dropdown0'>
+            <i class="material-icons">arrow_drop_down</i><span class="dropdown-button-text">Filters</span></button>
 
         <ul id='dropdown0' class='dropdown-content'>
           <li><a href="#!">Open issue and pull requests</a></li>
@@ -36,21 +37,6 @@
         <div flex-gt-sm="25" flex-sm="100" layout="row" layout-align="start center" class="grid-count-label left">
           <span>{{filtered.length}} Issues</span>
       </div>
-      <!--<ul class="right hide-on-small-and-down">
-          <li>
-            <md-select filter-by="statusDisplay"
-                     filter-type="select"
-                     ng-model="status"
-                     placeholder="Status"
-                     ng-change="gridActions.filter()">
-              <md-option value="">All Statuses</md-option>
-              <md-option ng-repeat="option in statusOptions track by option.value"
-                         value="{{option.value}}">
-                  {{option.text}}
-              </md-option>
-            </md-select>
-          </li>
-        </ul> -->
       </div>
     </nav>
 
@@ -58,13 +44,10 @@
       <li grid-item>
         <a href="#" ng-bind="item.Header" title="{{item.Header}}"></a>
         <span >#{{item.IssueId}} is opened on {{newDate(item.Date)}} by {{item.CreatedBy}}</span>
-
-
       </li>
-    </ul>
-
-    <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
-      <grid-pagination max-size="6"
+      <li ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage">
+        <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
+          <grid-pagination max-size="6"
                        boundary-links="true"
                        class="pagination"
                        ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
@@ -72,18 +55,25 @@
                        ng-model="paginationOptions.currentPage"
                        ng-change="reloadGrid()"
                        items-per-page="paginationOptions.itemsPerPage">
-      </grid-pagination>
-      <md-input-container flex-offset-gt-xs="5" class="items-per-page">
+          </grid-pagination>
+        </div>
+      </li>
+      <li>
+        <md-input-container flex-offset-gt-xs="5" class="items-per-page margin0 right">
           <md-select ng-init="paginationOptions.itemsPerPage = '5'" 
                      ng-model="paginationOptions.itemsPerPage" 
                      ng-change="reloadGrid()"
                      aria-label="false">
+              <md-option ng-value="5">5</md-option>
               <md-option ng-value="10">10</md-option>
               <md-option ng-value="25">25</md-option>
               <md-option ng-value="50">50</md-option>
               <md-option ng-value="75">75</md-option>
           </md-select>
-      </md-input-container>
+        </md-input-container>
+      </li>
+    </ul>
+    
     </div>
 </div>
 <!-- Angular Material Library -->

@@ -376,6 +376,7 @@
             }
         }])
         .factory('filtersFactory', function () {
+
             function selectFilter(items, value, predicate) {
                 return items.filter(function (item) {
                     return value && item[predicate] ? item[predicate] === value : true;

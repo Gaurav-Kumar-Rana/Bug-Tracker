@@ -1,19 +1,19 @@
 [
   {
       "tag": "Bug",
-      "color":"red"
+      "color":"#ff0000"
   }, 
   {
       "tag": "Js",
-      "color":"pink"
+      "color":"#ffc0cb"
   }, 
   {
       "tag": "Angular",
-      "color":"green"
+      "color":"#008000"
   },
   {
       "tag": "Duplicate",
-      "color":"orange"
+      "color":"#ffa500"
   }, 
   {
       "tag": "Enhancement",

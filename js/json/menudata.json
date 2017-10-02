@@ -1,0 +1,44 @@
+[
+  {
+    "menu_name":"Code",
+    "icon_name":"code",
+    "menu_count":12,
+    "menu_code":"code"
+  },
+  {
+    "menu_name":"Issue",
+    "icon_name":"bug_report",
+    "menu_count":3,
+    "menu_code":"issue"
+  },
+  {
+      "menu_name":"Pull Requests",
+      "icon_name":"import_export",
+      "menu_count":10,
+      "menu_code":"pull_requests"
+  },
+  {
+      "menu_name":"Projects",
+      "icon_name":"insert_chart",
+      "menu_count":16,
+      "menu_code":"projects"
+  },
+  {
+      "menu_name":"Wiki",
+      "icon_name":"library_books",
+      "menu_count":3,
+      "menu_code":"wiki"
+  },
+  {
+      "menu_name":"Settings",
+      "icon_name":"settings",
+      "menu_count":0,
+      "menu_code":"settings"
+  },
+  {
+      "menu_name":"Insits",
+      "icon_name":"",
+      "menu_count":0,
+      "menu_code":"insits"
+  }
+]

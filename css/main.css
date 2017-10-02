@@ -2,6 +2,15 @@
 body{
 	background-color: #fff;
 }
+.padding0{
+  padding:0px !important;
+}
+.margin0{
+  margin:0px !important;
+}
+.border-all{
+  border: 1px solid #e1e4e8;
+}
 .nav-extended {
   -webkit-box-shadow: none;
   box-shadow: none; }
@@ -524,17 +533,96 @@ div#preview {
 }
 
 .pagination{
-      margin: 0px auto;
+    margin: 10px auto;
+    display: table;
 }
 .pagination li {
     border: 1px solid #e1e4e8;
     float: left;
     border-left: 0px;
+
+    max-width: 75px;
+    line-height: 40px;
+    height: 40px;
+    width: 75px;
 }
-.pagination li:nth-child(2){
+.pagination li a{
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    line-height: 40px !important;
+}
+.pagination li:last-child{
+    border-bottom: 1px solid #e1e4e8;
+}
+.pagination li i{
+  line-height: 40px;
+}
+.pagination li:first-child{
   border-left: 1px solid #e1e4e8;
 }
-.pagination li:first-child,.pagination li:last-child{
-display: none;
+.current-indecator {
+    font-size: 18px;
+}
+.current-indecator a:hover{
+  text-decoration: underline;
+}
+.action-btn li {
+    width: 60px;
+    background-color: inherit;
+    border: 0px;
+}
+.action-btn li .btn {
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    color: #000;
+    box-shadow: none;
+}
+.action-btn li .btn:hover,.action-btn li:focus .btn {
+  background-color: #ee6e73;
+   color: #fff;
+}
+.tag-form input {
+    margin: 7px 0px !important;
+    padding: 0px 0px !important;
+    line-height: 60px;
+}
+.tag-form input[type=color] {
+    margin: 5px 0px !important;
+
+    -webkit-appearance: square-button;
+    width: 50px !important;
+    height: 50px !important;
+    background-color: transparent;
+    border-width: 0px;
+    border-style: solid;
+    border-color: rgb(169, 169, 169);
+    border-image: initial;
+    padding: 1px 2px;
+
+}
+i.input-search {
+    position: absolute;
+    color: #444d56;
+    top: 0px;
+    left: 5px;
+    height: 38px;
+    line-height: 38px;
+}
+li.filter-panel .input-field{
+
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 10px !important;
+
 }
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,139 @@
+<!-- <h1>{{message}}</h1> -->
+
+<nav class="filter-panel">
+    <div class="nav-wrapper">
+        <div class="lable-pnl border-radius3">
+            <button class="btn action-lbl active">Lables</button>
+            <button class="btn action-lbl">
+            Milstones</a>
+        </div>
+    </div>
+</nav>
+
+
+
+<div grid-data grid-options="labeldata" grid-actions="lablesActions" class="issue-list">
+    <nav class="issue-header">
+        <div class="nav-wrapper">
+            <a class="grid-count-label left">
+                <span><strog>{{filtered.length}}</strog> Labels</span>
+            </a>
+
+            <button class='dropdown-button filter-btn border-rght0 right' href='#' data-activates='sort-drop'>
+                <i class="material-icons">arrow_drop_down</i><span class="dropdown-button-text">Sort</span></button>
+
+                <ul id='sort-drop' class='dropdown-content'>
+                  <li>
+                        <a href="#!" 
+                           sortable="tag" 
+                           ng-click="sortAsc()">
+                           Alphabetically
+                        </a>
+                    </li>
+                  <!-- <li><a href="#!" sortable="tag" ng-init="sortOptions.direction = 'asc'">Reverse alphabetically</a></li> -->
+                  <li><a href="#!">Most issues</a></li>
+                  <li><a href="#!">Fewest issues</a></li>
+                </ul>
+            </div>
+    </nav>
+
+    <ul class="issue-body">
+        <li class="filter-panel">
+            <div class="col s10 m6 l4 input-field">
+                <i class="material-icons input-search">search</i>
+                <input id="search" type="search" 
+                                    ng-model="tag"
+                                    filter-by="tag"
+                                    filter-type="text" 
+                                    ng-change="lablesActions.filter()" 
+                                    placeholder="Search by label name."
+                                    aria-invalid="false">
+            </div>
+        </li>
+        <li grid-item id="tag-panel-{{$index}}">
+
+            <label style="background-color:{{item.color}}" class="color-tag left" id="tag-data-{{$index}}">
+                <i class="material-icons">label_outline</i>
+                <span>{{item.tag}}</span>
+            </label>
+
+            <div class="tag-form col s7 hide" id="edit-form-{{$index}}">
+                <input type="text" name="tagName" value="{{item.tag}}" class="col s8">
+                <input type="color" name="tagcolor" value="{{item.color}}" class="col s2 right">
+            </div>
+
+            <ul class="action-btn right">
+                <li class="left hide" ng-click="save($index)" title="save" data-action="save-{{$index}}">
+                    <button class="btn" value="#{{$index}}"><i class="material-icons">save</i></button>
+                </li>
+                <li class="left" ng-click="edit($index)" title="edit" data-action="edit-{{$index}}">
+                    <button class="btn" value="#{{$index}}"><i class="material-icons">edit</i></button>
+                </li>
+                <li class="right" ng-click="delete($index)" title="delete" data-action="delete-{{$index}}">
+                    <button class="btn" value="#{{$index}}"><i class="material-icons">delete</i></button>
+                </li>
+            </ul>
+        </li>
+        <li ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage">
+
+            <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
+                <grid-pagination max-size="6"
+                       boundary-links="true"
+                       class="pagination"
+                       ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                       total-items="paginationOptions.totalItems"
+                       ng-model="paginationOptions.currentPage"
+                       ng-change="reloadGrid()"
+                       items-per-page="paginationOptions.itemsPerPage">
+                </grid-pagination>
+            </div>
+        </li>
+        <li>
+            <md-input-container flex-offset-gt-xs="5" class="items-per-page margin0 right">
+                <md-select ng-init="paginationOptions.itemsPerPage = '5'" 
+                     ng-model="paginationOptions.itemsPerPage" 
+                     ng-change="reloadGrid()"
+                     aria-label="false">
+                      <md-option ng-value="5">5</md-option>
+                      <md-option ng-value="10">10</md-option>
+                      <md-option ng-value="25">25</md-option>
+                      <md-option ng-value="50">50</md-option>
+                      <md-option ng-value="75">75</md-option>
+                </md-select>
+            </md-input-container>
+        </li>
+    </ul>
+</div>
+
+<!-- Modal Structure -->
+<div id="tag-alert-modal" class="modal">
+    <div class="modal-content">
+        <h4 class="modal-header">Delete Label</h4>
+        <p class="modal-body">Are you sure want to delete <strong style="color: red">{{LabelName}} label </strong>?</p>
+        <input type="hidden" id="LableId" value="{{LableId}}">
+    </div>
+    <div class="modal-footer">
+        <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="doDelete(LableId,LabelName);">Ok</button>
+        <button class="modal-action modal-close waves-effect waves-green btn-flat">Cancle</button>
+    </div>
+</div>
+
+<script>
+    
+
+    $(document).ready(function(){  
+
+        $('#tag-alert-modal').modal();
+        $(".dropdown-button").dropdown({belowOrigin: true});
+
+        $('.dropdown-content').find('li').on('click',function(e){
+          e.preventDefault();
+          _actionbtn = $(this).parent().attr('id');
+          _text = $(this).find('a').text();
+          _actionbtn = "[data-activates='"+_actionbtn+"']";
+          $(_actionbtn).find('.dropdown-button-text').text(_text);
+        });
+
+    });
+
+</script>
